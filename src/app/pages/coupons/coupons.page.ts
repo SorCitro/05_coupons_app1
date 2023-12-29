@@ -12,6 +12,7 @@ export class CouponsPage implements OnInit {
 
   public coupons: Coupon[];
   public couponsActive: boolean;
+  public showCamera: boolean;
 
   constructor(
     private couponsServices: CouponsService,
@@ -22,6 +23,7 @@ export class CouponsPage implements OnInit {
   ) { 
     this.coupons = [];
     this.couponsActive=false;
+    this.showCamera = false;
   }
 
   ngOnInit() {
@@ -42,7 +44,12 @@ export class CouponsPage implements OnInit {
     this.navController.navigateForward('card-coupon');
   }
 
-  cuponsActive(){
+  startCamera(){
+    this.showCamera = true;
 
+  }
+
+  closeCamera(){
+    this.showCamera = false;
   }
 }
