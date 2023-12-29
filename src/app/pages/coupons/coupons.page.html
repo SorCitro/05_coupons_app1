@@ -1,13 +1,32 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>coupons</ion-title>
+    <ion-title id="titol">Cupones</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">coupons</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card id="marginlast" *ngFor="let coupon of coupons">
+    <ion-img [src]="coupon.img"></ion-img>
+    <ion-card-header>
+      <ion-card-title id="nom">{{coupon.name}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item lines="none">
+        <ion-label id="desc">{{coupon.discount}} %</ion-label>
+        <ion-button id="botno-active" slot="end" (click)="changeActive(coupon)">
+          {{coupon.active ? 'Desactivar' : 'Activar'}}
+        </ion-button>
+      </ion-item>
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-fab horizontal="start" vertical="bottom" slot="fixed">
+    <ion-fab-button (click)="goToCard()">
+      <ion-icon name="card-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
 </ion-content>
