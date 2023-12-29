@@ -11,15 +11,17 @@ import { CouponsService } from 'src/app/services/coupons.service';
 export class CouponsPage implements OnInit {
 
   public coupons: Coupon[];
+  public couponsActive: boolean;
 
   constructor(
     private couponsServices: CouponsService,
     private navParams: NavParams,
-    private navController: NavController
+    private navController: NavController,
 
 
   ) { 
     this.coupons = [];
+    this.couponsActive=false;
   }
 
   ngOnInit() {
@@ -31,6 +33,7 @@ export class CouponsPage implements OnInit {
 
   changeActive(coupon: Coupon){
     coupon.active = !coupon.active;
+    this.couponsActive = this.coupons.some(c => c.active);
   }
 
   goToCard(){
@@ -39,4 +42,7 @@ export class CouponsPage implements OnInit {
     this.navController.navigateForward('card-coupon');
   }
 
+  cuponsActive(){
+
+  }
 }
